@@ -37,10 +37,16 @@ body {
 
 .calculator-display {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 48px;
+    font-family: 'digital-clock-font';
     margin-top: 10px;
     flex-shrink: 0;
     height: 60px;
     width: 370px;
+    white-space: nowrap;
+    overflow: hidden;
     background-color: azure;
 }
 
@@ -52,6 +58,10 @@ body {
     font-size: 22px;
     color: white;
     border-radius: 50px;
+}
+
+.main-body-buttons:hover {
+    filter: brightness(150%);
 }
 
 .button-back {
@@ -76,4 +86,9 @@ body {
     /* margin-left: 30px; */
     width: 100%;
     gap: 26px
+}
+
+@font-face {
+    font-family: 'digital-clock-font';
+    src: url('./digital-dream.regular.ttf');
 }
