@@ -11,6 +11,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b == 0) {
+        window.open("https://media1.tenor.com/m/21d9atXjQiwAAAAC/gordon-ramsay.gif");
+    }
     return Math.round((a / b) * 1000) / 1000;
 }
 
@@ -79,7 +82,7 @@ buttonLabels.forEach(label => {
         button.classList.add('button-' + label);
     }
 
-    if (label == "=" || label == "🔙" || label == "AC") {
+    if (label == "=" || label == "🔙" || label == "AC" || label == ".") {
         functionButtonList[label] = button
     }
     else {
@@ -106,18 +109,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(calculatorBody);
 });
 
+const clearBtn = functionButtonList["AC"];
+const backBtn = functionButtonList["🔙"];
+const equalBtn = functionButtonList["="];
+const decimalBtn = functionButtonList["."];
+
 for (const btn in mainButtonList) {
     mainButtonList[btn].addEventListener("click", () => {
         if (calculatorDisplay.textContent == "ERROR!") {
             calculatorDisplay.textContent = "";
         }
+        if (mainButtonList[btn].textContent in operatorMap) {
+            decimalBtn.disabled = false;
+        }
         calculatorDisplay.textContent += mainButtonList[btn].textContent;
     });
 };
-
-const clearBtn = functionButtonList["AC"];
-const backBtn = functionButtonList["🔙"];
-const equalBtn = functionButtonList["="];
 
 clearBtn.addEventListener("click", () => {
     calculatorDisplay.textContent = "";
@@ -166,9 +173,6 @@ equalBtn.addEventListener("click", () => {
             }
         }
 
-        console.log(expressionNums);
-        console.log(expressionOprs);
-
         for (let i = 0; i < expressionOprs.length; i++) {
             let num1 = expressionNums[0];
             let num2 = expressionNums[1];
@@ -180,11 +184,15 @@ equalBtn.addEventListener("click", () => {
             expressionNums.unshift(total);
         }
         calculatorDisplay.textContent = `${total}`;
-        console.log(calculatorDisplay.textContent);
     }
     else {
         calculatorDisplay.textContent = "ERROR!"
     }
+});
+
+decimalBtn.addEventListener("click", () => {
+    calculatorDisplay.textContent += '.';
+    decimalBtn.disabled = true;
 });
 
 function checkNumberType(number) {

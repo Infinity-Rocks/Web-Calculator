@@ -39,7 +39,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 48px;
+    font-size: 61px;
     font-family: 'digital-clock-font';
     margin-top: 10px;
     flex-shrink: 0;
@@ -47,7 +47,7 @@ body {
     width: 370px;
     white-space: nowrap;
     overflow: hidden;
-    background-color: azure;
+    color: red;
 }
 
 .main-body-buttons {
@@ -82,7 +82,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 36px;
     /* margin-left: 30px; */
     width: 100%;
     gap: 26px
