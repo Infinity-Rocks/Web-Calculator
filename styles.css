@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    background-color: rgb(203, 217, 220);
+    background-color: rgb(104, 107, 108);
     height: 100%;
     width: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -19,6 +19,7 @@ body {
     width: 400px;
     background-color: black;
     border-radius: 20px;
+    box-shadow: 0 0 5px 5px rgb(255, 255, 255);
 }
 
 .calculator-header {
@@ -31,8 +32,6 @@ body {
     width: auto;
     font-size: 48px;
     color: white;
-    background-color: gray;
-    border-radius: 10px;
 }
 
 .calculator-display {
@@ -55,7 +54,7 @@ body {
     background-color: gray;
     height: 60px;
     width: 60px;
-    font-size: 22px;
+    font-size: 30px;
     color: white;
     border-radius: 50px;
 }

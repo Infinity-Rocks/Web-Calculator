@@ -116,7 +116,7 @@ const decimalBtn = functionButtonList["."];
 
 for (const btn in mainButtonList) {
     mainButtonList[btn].addEventListener("click", () => {
-        if (calculatorDisplay.textContent == "ERROR!") {
+        if (calculatorDisplay.textContent == "ERROR!" || calculatorDisplay.textContent == "NaN") {
             calculatorDisplay.textContent = "";
         }
         if (mainButtonList[btn].textContent in operatorMap) {
@@ -141,8 +141,10 @@ backBtn.addEventListener("click", () => {
 
 equalBtn.addEventListener("click", () => {
     let expression = calculatorDisplay.textContent;
-
-    if (expression != "" && expression != "ERROR!") {
+    if (expression == "NaN" || expression.length == 1 || expression == "undefined") {
+        calculatorDisplay.textContent = "";
+    }
+    else if (expression != "" && expression != "ERROR!") {
         let total = 0;
         let expressionNums = [];
         let expressionOprs = [];
@@ -191,8 +193,41 @@ equalBtn.addEventListener("click", () => {
 });
 
 decimalBtn.addEventListener("click", () => {
+    if (expression == "NaN") {
+        calculatorDisplay.textContent = "";
+    }
     calculatorDisplay.textContent += '.';
     decimalBtn.disabled = true;
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key >= '0' && event.key <= '9') {
+        calculatorDisplay.textContent += event.key;
+    }
+    else if (event.key == '.' && !decimalBtn.disabled) {
+        calculatorDisplay.textContent += event.key;
+        decimalBtn.disabled = true;
+    }
+    else if (event.key == '+' || event.key == '-' || event.key == '*' || event.key == '^' || event.key == '%') {
+        if (event.key == '*') {
+            calculatorDisplay.textContent += 'x';
+        }
+        else if (event.key == '^') {
+            calculatorDisplay.textContent += '∧';
+        }
+        else if (event.key == '%') {
+            calculatorDisplay.textContent += '﹪';
+        }
+        else {
+            calculatorDisplay.textContent += event.key;
+        }
+    }
+    else if (event.key == 'Backspace') {
+        backBtn.click();
+    }
+    else if (event.key == '=' || event.key == 'Enter') {
+        equalBtn.click();
+    }
 });
 
 function checkNumberType(number) {
