@@ -48,7 +48,7 @@ const calculatorDisplay = document.createElement("div");
 const numberSquare = document.createElement("div");
 
 const buttonLabels = [
-    'AC', '←', '∧', '﹪',
+    'AC', 'DEL', '∧', '﹪',
     '7', '8', '9', '/',
     '4', '5', '6', 'x',
     '1', '2', '3', '-',
@@ -63,7 +63,7 @@ const operatorMap = {
     '+': 'addition',
     '∧': 'exp',
     '﹪': 'modulo',
-    '←': 'back',
+    'DEL': 'back',
     '=': 'equal'
 }
 
@@ -82,7 +82,7 @@ buttonLabels.forEach(label => {
         button.classList.add('button-' + label);
     }
 
-    if (label == "=" || label == "←" || label == "AC" || label == ".") {
+    if (label == "=" || label == "DEL" || label == "AC" || label == ".") {
         functionButtonList[label] = button
     }
     else {
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const clearBtn = functionButtonList["AC"];
-const backBtn = functionButtonList["←"];
+const backBtn = functionButtonList["DEL"];
 const equalBtn = functionButtonList["="];
 const decimalBtn = functionButtonList["."];
 
